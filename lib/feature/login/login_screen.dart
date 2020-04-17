@@ -66,14 +66,20 @@ class LoginScreen extends StatelessWidget {
               ),
               orElse: () => BigButton(
                 labelKey: 'sign_in',
-                onPressed: notifier.onLoginClicked,
+                onPressed: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                  notifier.onLoginClicked();
+                },
               ),
             ),
             BigButton(
               color: AppColors.colorAccent,
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               labelKey: 'register_invite',
-              onPressed: notifier.onRegisterClicked,
+              onPressed: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                notifier.onRegisterClicked();
+              },
             ),
           ],
         ),

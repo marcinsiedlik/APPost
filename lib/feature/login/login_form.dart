@@ -1,4 +1,3 @@
-import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/forms/form_validations_mixin.dart';
 import 'package:appost/base/ui/localization/app_localizations.dart';
 import 'package:appost/feature/login/login_notifier.dart';
@@ -28,40 +27,30 @@ class LoginForm extends StatelessWidget with AppFormsMixin {
   }
 
   Widget _buildEmailField(BuildContext context, LoginNotifier notifier) {
-    return TextFormField(
+    return buildFormField(
       controller: notifier.emailField.textController,
-      focusNode: notifier.emailField.focusNode,
-      textInputAction: TextInputAction.next,
+      node: notifier.emailField.focusNode,
       keyboardType: TextInputType.emailAddress,
-      cursorColor: AppColors.colorPrimary,
       validator: (field) => validateEmail(context, field),
       onEditingComplete: () => FocusScope.of(context).requestFocus(notifier.passwordField.focusNode),
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.alternate_email),
-        border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(12))),
-        labelText: AppLocalizations.of(context).get('email_address'),
-      ),
+      labelText: AppLocalizations.of(context).get('email_address'),
+      prefixIcon: Icons.mail_outline,
     );
   }
 
   Widget _buildPasswordField(BuildContext context, LoginNotifier notifier) {
-    return TextFormField(
+    return buildFormField(
       controller: notifier.passwordField.textController,
-      focusNode: notifier.passwordField.focusNode,
-      textInputAction: TextInputAction.go,
+      node: notifier.passwordField.focusNode,
       keyboardType: TextInputType.visiblePassword,
-      obscureText: true,
-      cursorColor: AppColors.colorPrimary,
+      textInputAction: TextInputAction.go,
       validator: (field) => validatePassword(context, field),
       onEditingComplete: () {
         FocusScope.of(context).requestFocus(FocusNode());
         notifier.onLoginClicked();
       },
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.lock_outline),
-        border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(12))),
-        labelText: AppLocalizations.of(context).get('password'),
-      ),
+      labelText: AppLocalizations.of(context).get('password'),
+      prefixIcon: Icons.lock_outline,
     );
   }
 }
