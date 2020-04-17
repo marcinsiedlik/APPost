@@ -3,6 +3,7 @@ import 'package:appost/base/network/data_source/repository/user/user_repository.
 import 'package:appost/base/network/tokens/model/tokens_response.dart';
 import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
+import 'package:appost/base/ui/forms/form_field_controller.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
 import 'package:appost/base/ui/routes/cupertiono_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -18,11 +19,8 @@ class LoginNotifier extends BaseNotifier {
 
   final formKey = GlobalKey<FormState>();
 
-  final emailNode = FocusNode();
-  final passwordNode = FocusNode();
-
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailField = FormFieldController();
+  final passwordField = FormFieldController();
 
   var loginState = CallState<TokensResponse>();
 
@@ -30,8 +28,8 @@ class LoginNotifier extends BaseNotifier {
     dispatch<TokensResponse>(
       callState: loginState,
       block: () => _userRepository.login(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailField.text,
+        password: passwordField.text,
       ),
       onSuccess: (data) => _tokensStorage.saveTokens(data.accessToken, data.refreshToken),
       onError: RouterExtensions.showErrorFlushbar,
@@ -50,10 +48,8 @@ class LoginNotifier extends BaseNotifier {
 
   @override
   void dispose() {
-    emailNode.dispose();
-    passwordNode.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    emailField.dispose();
+    passwordField.dispose();
     super.dispose();
   }
 }

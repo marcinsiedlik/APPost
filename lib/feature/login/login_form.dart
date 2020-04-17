@@ -5,7 +5,7 @@ import 'package:appost/feature/login/login_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginForm extends StatelessWidget with FormValidationsMixin {
+class LoginForm extends StatelessWidget with AppFormsMixin {
   @override
   Widget build(BuildContext context) {
     final notifier = Provider.of<LoginNotifier>(context);
@@ -29,13 +29,13 @@ class LoginForm extends StatelessWidget with FormValidationsMixin {
 
   Widget _buildEmailField(BuildContext context, LoginNotifier notifier) {
     return TextFormField(
-      controller: notifier.emailController,
-      focusNode: notifier.emailNode,
+      controller: notifier.emailField.textController,
+      focusNode: notifier.emailField.focusNode,
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.emailAddress,
       cursorColor: AppColors.colorPrimary,
       validator: (field) => validateEmail(context, field),
-      onEditingComplete: () => FocusScope.of(context).requestFocus(notifier.passwordNode),
+      onEditingComplete: () => FocusScope.of(context).requestFocus(notifier.passwordField.focusNode),
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.alternate_email),
         border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(12))),
@@ -46,8 +46,8 @@ class LoginForm extends StatelessWidget with FormValidationsMixin {
 
   Widget _buildPasswordField(BuildContext context, LoginNotifier notifier) {
     return TextFormField(
-      controller: notifier.passwordController,
-      focusNode: notifier.passwordNode,
+      controller: notifier.passwordField.textController,
+      focusNode: notifier.passwordField.focusNode,
       textInputAction: TextInputAction.go,
       keyboardType: TextInputType.visiblePassword,
       obscureText: true,

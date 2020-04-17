@@ -1,4 +1,5 @@
 import 'package:appost/base/annotations/retrofit_annotations.dart';
+import 'package:appost/base/network/data_source/model/user/register_model.dart';
 import 'package:appost/base/network/tokens/model/tokens_response.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -17,6 +18,9 @@ abstract class UserService {
     @Field('password') String password,
     @Field('grant_type') String grantType,
   );
+
+  @POST('/user/register')
+  Future<void> register(@Body() RegisterModel model);
 
   @factoryMethod
   factory UserService(Dio dio) = _UserService;

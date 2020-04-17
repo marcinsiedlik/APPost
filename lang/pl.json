@@ -19,5 +19,14 @@
   "validation_invalid_email": "Błędny format adresu email",
   "password_to_short": "Hasło musi zawierać przynajmniej 6 znaków",
   "sign_in": "Zaloguj się",
-  "register_invite": "Nie posiadasz konta? Załóż je teraz!"
+  "register_invite": "Nie posiadasz konta? Załóż je teraz!",
+  "register": "Rejestracja",
+  "passwords_not_equal": "Hasła nie są identyczne",
+  "repeat_password": "Powtórz hasło",
+  "nick": "Pseudonim",
+  "first_name": "Imię",
+  "last_name": "Nazwisko",
+  "too_short_nick": "Zbyt krótki pseudonim",
+  "place": "Lokalizacja"
+
 }

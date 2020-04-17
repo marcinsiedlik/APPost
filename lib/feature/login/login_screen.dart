@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
             width: 56,
             color: AppColors.colorPrimary,
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 16),
           Text(
             AppLocalizations.of(context).get('login'),
             style: const TextStyle(
