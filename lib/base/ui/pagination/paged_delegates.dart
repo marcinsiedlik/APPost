@@ -1,0 +1,3 @@
+class PagedProgress {}
+
+class PagedError {}

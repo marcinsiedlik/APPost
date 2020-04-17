@@ -1,0 +1,45 @@
+import 'package:appost/base/network/exceptions/api_exception.dart';
+import 'package:appost/base/network/exceptions/error_response.dart';
+import 'package:dio/dio.dart';
+
+abstract class BaseRepository {
+  Future<T> call<T>(Future<T> call()) async {
+    ApiException exception;
+    final response = await call().catchError((error) {
+      if (error is DioError) {
+        exception = _mapErrorResponse(error.response);
+      }
+    });
+    if (exception != null) {
+      return Future.error(exception);
+    }
+    return Future.value(response);
+  }
+
+  ApiException _mapErrorResponse(Response response) {
+    ErrorResponse errorResponse;
+    try {
+      errorResponse = ErrorResponse.fromJson(response.data);
+    } catch (e) {
+      return DefaultException(null, null, null);
+    }
+    final errorCode = errorResponse.code.toString() ?? response.statusCode.toString();
+    final printableMessage = errorResponse.printableMessage;
+    final developerMessage = errorResponse.developerMessage ?? "NO_DEVELOPER_MESSAGE";
+
+    switch (errorCode) {
+      case 'invalid_request':
+        return WrongCredentialsException(errorCode, printableMessage, developerMessage);
+      case '401':
+        return UnauthorizedException(errorCode, printableMessage, developerMessage);
+      case '404':
+        return NotFoundException(errorCode, printableMessage, developerMessage);
+      case '422':
+        return BadValidationException(errorCode, printableMessage, developerMessage);
+      case '500':
+        return InternalServerException(errorCode, printableMessage, developerMessage);
+      default:
+        return DefaultException(errorCode, printableMessage, developerMessage);
+    }
+  }
+}
