@@ -1,6 +1,7 @@
 import 'package:appost/base/di/get_it.dart';
 import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/localization/app_localizations.dart';
+import 'package:appost/base/ui/widgets/big_button.dart';
 import 'package:appost/feature/register/register_form.dart';
 import 'package:appost/feature/register/register_notifier.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class RegisterScreen extends StatelessWidget {
             children: <Widget>[
               _buildRegisterHeader(context),
               RegisterForm(),
+              _buildRegisterButton(context),
             ],
           ),
         ),
@@ -43,6 +45,28 @@ class RegisterScreen extends StatelessWidget {
               fontWeight: FontWeight.w600,
               fontSize: 30,
               color: AppColors.colorPrimary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRegisterButton(BuildContext context) {
+    return Consumer<RegisterNotifier>(
+      builder: (context, notifier, _) => Column(
+        children: <Widget>[
+          notifier.registerState.whenOrElse(
+            progress: () => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 26),
+              child: CircularProgressIndicator(),
+            ),
+            orElse: () => BigButton(
+              labelKey: 'register_in',
+              onPressed: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                notifier.onRegisterClicked();
+              },
             ),
           ),
         ],

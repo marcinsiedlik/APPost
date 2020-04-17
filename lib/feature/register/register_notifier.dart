@@ -1,3 +1,4 @@
+import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/forms/form_field_controller.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,12 @@ class RegisterNotifier extends BaseNotifier {
   final lastNameField = FormFieldController();
   final placeField = FormFieldController();
 
+  var registerState = CallState();
+
+  void onRegisterClicked() {
+    if (formKey.currentState.validate()) {}
+  }
+
   @override
   void dispose() {
     emailField.dispose();
@@ -26,6 +33,4 @@ class RegisterNotifier extends BaseNotifier {
     placeField.dispose();
     super.dispose();
   }
-
-  void onRegisterClicked() {}
 }

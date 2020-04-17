@@ -27,6 +27,7 @@
   "first_name": "Imię",
   "last_name": "Nazwisko",
   "too_short_nick": "Zbyt krótki pseudonim",
-  "place": "Lokalizacja"
+  "place": "Lokalizacja",
+  "register_in": "Zarejestruj się"
 
 }
