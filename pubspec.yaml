@@ -50,5 +50,28 @@ flutter:
 
   assets:
     - lang/
+    - fonts/
     - assets/icons/
     - assets/images/
+
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: fonts/Oswald/Oswald-ExtraLight.ttf
+          style: normal
+          weight: 200
+        - asset: fonts/Oswald/Oswald-Light.ttf
+          style: normal
+          weight: 300
+        - asset: fonts/Oswald/Oswald-Regular.ttf
+          style: normal
+          weight: 400
+        - asset: fonts/Oswald/Oswald-Medium.ttf
+          style: normal
+          weight: 500
+        - asset: fonts/Oswald/Oswald-SemiBold.ttf
+          style: normal
+          weight: 600
+        - asset: fonts/Oswald/Oswald-Bold.ttf
+          style: normal
+          weight: 700
