@@ -30,6 +30,8 @@ dependencies:
   freezed_annotation: ^0.7.1
   shared_preferences: ^0.5.6+3
   flushbar: ^1.10.0
+  flutter_svg: ^0.17.4
+  email_validator: ^1.0.4
 
 dev_dependencies:
   flutter_test:

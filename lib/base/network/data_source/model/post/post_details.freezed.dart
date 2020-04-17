@@ -8,7 +8,6 @@ part of 'post_details.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 PostDetails _$PostDetailsFromJson(Map<String, dynamic> json) {
   return _PostDetails.fromJson(json);
 }
@@ -39,19 +38,13 @@ const $PostDetails = _$PostDetailsTearOff();
 
 mixin _$PostDetails {
   int get id;
-
   int get userId;
-
   String get userNick;
-
   int get creationDate;
-
   String get title;
-
   String get description;
 
   Map<String, dynamic> toJson();
-
   $PostDetailsCopyWith<PostDetails> get copyWith;
 }
 
@@ -65,7 +58,6 @@ class _$PostDetailsCopyWithImpl<$Res> implements $PostDetailsCopyWith<$Res> {
   _$PostDetailsCopyWithImpl(this._value, this._then);
 
   final PostDetails _value;
-
   // ignore: unused_field
   final $Res Function(PostDetails) _then;
 
@@ -82,22 +74,31 @@ class _$PostDetailsCopyWithImpl<$Res> implements $PostDetailsCopyWith<$Res> {
       id: id == freezed ? _value.id : id as int,
       userId: userId == freezed ? _value.userId : userId as int,
       userNick: userNick == freezed ? _value.userNick : userNick as String,
-      creationDate: creationDate == freezed ? _value.creationDate : creationDate as int,
+      creationDate:
+      creationDate == freezed ? _value.creationDate : creationDate as int,
       title: title == freezed ? _value.title : title as String,
-      description: description == freezed ? _value.description : description as String,
+      description:
+      description == freezed ? _value.description : description as String,
     ));
   }
 }
 
-abstract class _$PostDetailsCopyWith<$Res> implements $PostDetailsCopyWith<$Res> {
+abstract class _$PostDetailsCopyWith<$Res>
+    implements $PostDetailsCopyWith<$Res> {
   factory _$PostDetailsCopyWith(_PostDetails value, $Res Function(_PostDetails) then) =
-      __$PostDetailsCopyWithImpl<$Res>;
+  __$PostDetailsCopyWithImpl<$Res>;
 
   @override
-  $Res call({int id, int userId, String userNick, int creationDate, String title, String description});
+  $Res call({int id,
+    int userId,
+    String userNick,
+    int creationDate,
+    String title,
+    String description});
 }
 
-class __$PostDetailsCopyWithImpl<$Res> extends _$PostDetailsCopyWithImpl<$Res> implements _$PostDetailsCopyWith<$Res> {
+class __$PostDetailsCopyWithImpl<$Res> extends _$PostDetailsCopyWithImpl<$Res>
+    implements _$PostDetailsCopyWith<$Res> {
   __$PostDetailsCopyWithImpl(_PostDetails _value, $Res Function(_PostDetails) _then)
       : super(_value, (v) => _then(v as _PostDetails));
 
@@ -117,9 +118,11 @@ class __$PostDetailsCopyWithImpl<$Res> extends _$PostDetailsCopyWithImpl<$Res> i
       id: id == freezed ? _value.id : id as int,
       userId: userId == freezed ? _value.userId : userId as int,
       userNick: userNick == freezed ? _value.userNick : userNick as String,
-      creationDate: creationDate == freezed ? _value.creationDate : creationDate as int,
+      creationDate:
+      creationDate == freezed ? _value.creationDate : creationDate as int,
       title: title == freezed ? _value.title : title as String,
-      description: description == freezed ? _value.description : description as String,
+      description:
+      description == freezed ? _value.description : description as String,
     ));
   }
 }
@@ -130,9 +133,9 @@ class _$_PostDetails implements _PostDetails {
       {@required this.id,
       @required this.userId,
       @required this.userNick,
-      @required this.creationDate,
-      @required this.title,
-      @required this.description})
+        @required this.creationDate,
+        @required this.title,
+        @required this.description})
       : assert(id != null),
         assert(userId != null),
         assert(userNick != null),
@@ -140,7 +143,8 @@ class _$_PostDetails implements _PostDetails {
         assert(title != null),
         assert(description != null);
 
-  factory _$_PostDetails.fromJson(Map<String, dynamic> json) => _$_$_PostDetailsFromJson(json);
+  factory _$_PostDetails.fromJson(Map<String, dynamic> json) =>
+      _$_$_PostDetailsFromJson(json);
 
   @override
   final int id;
@@ -164,14 +168,21 @@ class _$_PostDetails implements _PostDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PostDetails &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.userId, userId) || const DeepCollectionEquality().equals(other.userId, userId)) &&
-            (identical(other.userNick, userNick) || const DeepCollectionEquality().equals(other.userNick, userNick)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)) &&
+            (identical(other.userNick, userNick) ||
+                const DeepCollectionEquality()
+                    .equals(other.userNick, userNick)) &&
             (identical(other.creationDate, creationDate) ||
-                const DeepCollectionEquality().equals(other.creationDate, creationDate)) &&
-            (identical(other.title, title) || const DeepCollectionEquality().equals(other.title, title)) &&
+                const DeepCollectionEquality()
+                    .equals(other.creationDate, creationDate)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality().equals(other.description, description)));
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
   }
 
   @override
@@ -185,7 +196,8 @@ class _$_PostDetails implements _PostDetails {
       const DeepCollectionEquality().hash(description);
 
   @override
-  _$PostDetailsCopyWith<_PostDetails> get copyWith => __$PostDetailsCopyWithImpl<_PostDetails>(this, _$identity);
+  _$PostDetailsCopyWith<_PostDetails> get copyWith =>
+      __$PostDetailsCopyWithImpl<_PostDetails>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -194,15 +206,15 @@ class _$_PostDetails implements _PostDetails {
 }
 
 abstract class _PostDetails implements PostDetails {
-  const factory _PostDetails(
-      {@required int id,
-      @required int userId,
-      @required String userNick,
-      @required int creationDate,
-      @required String title,
-      @required String description}) = _$_PostDetails;
+  const factory _PostDetails({@required int id,
+    @required int userId,
+    @required String userNick,
+    @required int creationDate,
+    @required String title,
+    @required String description}) = _$_PostDetails;
 
-  factory _PostDetails.fromJson(Map<String, dynamic> json) = _$_PostDetails.fromJson;
+  factory _PostDetails.fromJson(Map<String, dynamic> json) =
+  _$_PostDetails.fromJson;
 
   @override
   int get id;
@@ -218,10 +230,8 @@ abstract class _PostDetails implements PostDetails {
 
   @override
   String get title;
-
   @override
   String get description;
-
   @override
   _$PostDetailsCopyWith<_PostDetails> get copyWith;
 }

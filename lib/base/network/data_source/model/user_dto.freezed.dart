@@ -8,7 +8,6 @@ part of 'user_dto.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
   return _UserDto.fromJson(json);
 }
@@ -33,33 +32,32 @@ const $UserDto = _$UserDtoTearOff();
 
 mixin _$UserDto {
   int get id;
-
   String get email;
-
   String get nick;
-
   String get firstName;
-
   String get lastName;
-
   String get place;
 
   Map<String, dynamic> toJson();
-
   $UserDtoCopyWith<UserDto> get copyWith;
 }
 
 abstract class $UserDtoCopyWith<$Res> {
-  factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) = _$UserDtoCopyWithImpl<$Res>;
+  factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
+  _$UserDtoCopyWithImpl<$Res>;
 
-  $Res call({int id, String email, String nick, String firstName, String lastName, String place});
+  $Res call({int id,
+    String email,
+    String nick,
+    String firstName,
+    String lastName,
+    String place});
 }
 
 class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
   _$UserDtoCopyWithImpl(this._value, this._then);
 
   final UserDto _value;
-
   // ignore: unused_field
   final $Res Function(UserDto) _then;
 
@@ -84,14 +82,22 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
 }
 
 abstract class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
-  factory _$UserDtoCopyWith(_UserDto value, $Res Function(_UserDto) then) = __$UserDtoCopyWithImpl<$Res>;
+  factory _$UserDtoCopyWith(_UserDto value, $Res Function(_UserDto) then) =
+  __$UserDtoCopyWithImpl<$Res>;
 
   @override
-  $Res call({int id, String email, String nick, String firstName, String lastName, String place});
+  $Res call({int id,
+    String email,
+    String nick,
+    String firstName,
+    String lastName,
+    String place});
 }
 
-class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res> implements _$UserDtoCopyWith<$Res> {
-  __$UserDtoCopyWithImpl(_UserDto _value, $Res Function(_UserDto) _then) : super(_value, (v) => _then(v as _UserDto));
+class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
+    implements _$UserDtoCopyWith<$Res> {
+  __$UserDtoCopyWithImpl(_UserDto _value, $Res Function(_UserDto) _then)
+      : super(_value, (v) => _then(v as _UserDto));
 
   @override
   _UserDto get _value => super._value as _UserDto;
@@ -118,9 +124,15 @@ class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res> implement
 
 @JsonSerializable()
 class _$_UserDto implements _UserDto {
-  const _$_UserDto({this.id, this.email, this.nick, this.firstName, this.lastName, this.place});
+  const _$_UserDto({this.id,
+    this.email,
+    this.nick,
+    this.firstName,
+    this.lastName,
+    this.place});
 
-  factory _$_UserDto.fromJson(Map<String, dynamic> json) => _$_$_UserDtoFromJson(json);
+  factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_UserDtoFromJson(json);
 
   @override
   final int id;
@@ -144,13 +156,20 @@ class _$_UserDto implements _UserDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _UserDto &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) || const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.nick, nick) || const DeepCollectionEquality().equals(other.nick, nick)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.nick, nick) ||
+                const DeepCollectionEquality().equals(other.nick, nick)) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality().equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) || const DeepCollectionEquality().equals(other.lastName, lastName)) &&
-            (identical(other.place, place) || const DeepCollectionEquality().equals(other.place, place)));
+                const DeepCollectionEquality()
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
+            (identical(other.place, place) ||
+                const DeepCollectionEquality().equals(other.place, place)));
   }
 
   @override
@@ -164,7 +183,8 @@ class _$_UserDto implements _UserDto {
       const DeepCollectionEquality().hash(place);
 
   @override
-  _$UserDtoCopyWith<_UserDto> get copyWith => __$UserDtoCopyWithImpl<_UserDto>(this, _$identity);
+  _$UserDtoCopyWith<_UserDto> get copyWith =>
+      __$UserDtoCopyWithImpl<_UserDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -173,8 +193,12 @@ class _$_UserDto implements _UserDto {
 }
 
 abstract class _UserDto implements UserDto {
-  const factory _UserDto({int id, String email, String nick, String firstName, String lastName, String place}) =
-      _$_UserDto;
+  const factory _UserDto({int id,
+    String email,
+    String nick,
+    String firstName,
+    String lastName,
+    String place}) = _$_UserDto;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
@@ -189,13 +213,10 @@ abstract class _UserDto implements UserDto {
 
   @override
   String get firstName;
-
   @override
   String get lastName;
-
   @override
   String get place;
-
   @override
   _$UserDtoCopyWith<_UserDto> get copyWith;
 }

@@ -8,7 +8,6 @@ part of 'error_response.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
   return _ErrorResponse.fromJson(json);
 }
@@ -30,13 +29,10 @@ const $ErrorResponse = _$ErrorResponseTearOff();
 
 mixin _$ErrorResponse {
   int get code;
-
   String get developerMessage;
-
   String get printableMessage;
 
   Map<String, dynamic> toJson();
-
   $ErrorResponseCopyWith<ErrorResponse> get copyWith;
 }
 
@@ -47,7 +43,8 @@ abstract class $ErrorResponseCopyWith<$Res> {
   $Res call({int code, String developerMessage, String printableMessage});
 }
 
-class _$ErrorResponseCopyWithImpl<$Res> implements $ErrorResponseCopyWith<$Res> {
+class _$ErrorResponseCopyWithImpl<$Res>
+    implements $ErrorResponseCopyWith<$Res> {
   _$ErrorResponseCopyWithImpl(this._value, this._then);
 
   final ErrorResponse _value;
@@ -63,15 +60,20 @@ class _$ErrorResponseCopyWithImpl<$Res> implements $ErrorResponseCopyWith<$Res> 
   }) {
     return _then(_value.copyWith(
       code: code == freezed ? _value.code : code as int,
-      developerMessage: developerMessage == freezed ? _value.developerMessage : developerMessage as String,
-      printableMessage: printableMessage == freezed ? _value.printableMessage : printableMessage as String,
+      developerMessage: developerMessage == freezed
+          ? _value.developerMessage
+          : developerMessage as String,
+      printableMessage: printableMessage == freezed
+          ? _value.printableMessage
+          : printableMessage as String,
     ));
   }
 }
 
-abstract class _$ErrorResponseCopyWith<$Res> implements $ErrorResponseCopyWith<$Res> {
+abstract class _$ErrorResponseCopyWith<$Res>
+    implements $ErrorResponseCopyWith<$Res> {
   factory _$ErrorResponseCopyWith(_ErrorResponse value, $Res Function(_ErrorResponse) then) =
-      __$ErrorResponseCopyWithImpl<$Res>;
+  __$ErrorResponseCopyWithImpl<$Res>;
 
   @override
   $Res call({int code, String developerMessage, String printableMessage});
@@ -93,8 +95,12 @@ class __$ErrorResponseCopyWithImpl<$Res> extends _$ErrorResponseCopyWithImpl<$Re
   }) {
     return _then(_ErrorResponse(
       code: code == freezed ? _value.code : code as int,
-      developerMessage: developerMessage == freezed ? _value.developerMessage : developerMessage as String,
-      printableMessage: printableMessage == freezed ? _value.printableMessage : printableMessage as String,
+      developerMessage: developerMessage == freezed
+          ? _value.developerMessage
+          : developerMessage as String,
+      printableMessage: printableMessage == freezed
+          ? _value.printableMessage
+          : printableMessage as String,
     ));
   }
 }
@@ -103,7 +109,8 @@ class __$ErrorResponseCopyWithImpl<$Res> extends _$ErrorResponseCopyWithImpl<$Re
 class _$_ErrorResponse implements _ErrorResponse {
   const _$_ErrorResponse({this.code, this.developerMessage, this.printableMessage});
 
-  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) => _$_$_ErrorResponseFromJson(json);
+  factory _$_ErrorResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_ErrorResponseFromJson(json);
 
   @override
   final int code;
@@ -121,11 +128,14 @@ class _$_ErrorResponse implements _ErrorResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ErrorResponse &&
-            (identical(other.code, code) || const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
             (identical(other.developerMessage, developerMessage) ||
-                const DeepCollectionEquality().equals(other.developerMessage, developerMessage)) &&
+                const DeepCollectionEquality()
+                    .equals(other.developerMessage, developerMessage)) &&
             (identical(other.printableMessage, printableMessage) ||
-                const DeepCollectionEquality().equals(other.printableMessage, printableMessage)));
+                const DeepCollectionEquality()
+                    .equals(other.printableMessage, printableMessage)));
   }
 
   @override
@@ -146,9 +156,12 @@ class _$_ErrorResponse implements _ErrorResponse {
 }
 
 abstract class _ErrorResponse implements ErrorResponse {
-  const factory _ErrorResponse({int code, String developerMessage, String printableMessage}) = _$_ErrorResponse;
+  const factory _ErrorResponse({int code,
+    String developerMessage,
+    String printableMessage}) = _$_ErrorResponse;
 
-  factory _ErrorResponse.fromJson(Map<String, dynamic> json) = _$_ErrorResponse.fromJson;
+  factory _ErrorResponse.fromJson(Map<String, dynamic> json) =
+  _$_ErrorResponse.fromJson;
 
   @override
   int get code;

@@ -37,8 +37,8 @@ class AppThemes {
     cursorColor: AppColors.colorPrimary,
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        fontSize: 18,
       ),
       errorStyle: const TextStyle(fontWeight: FontWeight.w600),
     ),

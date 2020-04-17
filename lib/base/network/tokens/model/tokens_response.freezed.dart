@@ -8,7 +8,6 @@ part of 'tokens_response.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 TokensResponse _$TokensResponseFromJson(Map<String, dynamic> json) {
   return _TokensResponse.fromJson(json);
 }
@@ -38,20 +37,15 @@ const $TokensResponse = _$TokensResponseTearOff();
 mixin _$TokensResponse {
   @JsonKey(name: 'access_token')
   String get accessToken;
-
   @JsonKey(name: 'token_type')
   String get tokenType;
-
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
-
   @JsonKey(name: 'expires_in')
   int get expiresIn;
-
   String get scope;
 
   Map<String, dynamic> toJson();
-
   $TokensResponseCopyWith<TokensResponse> get copyWith;
 }
 
@@ -67,7 +61,8 @@ abstract class $TokensResponseCopyWith<$Res> {
       String scope});
 }
 
-class _$TokensResponseCopyWithImpl<$Res> implements $TokensResponseCopyWith<$Res> {
+class _$TokensResponseCopyWithImpl<$Res>
+    implements $TokensResponseCopyWith<$Res> {
   _$TokensResponseCopyWithImpl(this._value, this._then);
 
   final TokensResponse _value;
@@ -84,26 +79,29 @@ class _$TokensResponseCopyWithImpl<$Res> implements $TokensResponseCopyWith<$Res
     Object scope = freezed,
   }) {
     return _then(_value.copyWith(
-      accessToken: accessToken == freezed ? _value.accessToken : accessToken as String,
+      accessToken:
+      accessToken == freezed ? _value.accessToken : accessToken as String,
       tokenType: tokenType == freezed ? _value.tokenType : tokenType as String,
-      refreshToken: refreshToken == freezed ? _value.refreshToken : refreshToken as String,
+      refreshToken: refreshToken == freezed
+          ? _value.refreshToken
+          : refreshToken as String,
       expiresIn: expiresIn == freezed ? _value.expiresIn : expiresIn as int,
       scope: scope == freezed ? _value.scope : scope as String,
     ));
   }
 }
 
-abstract class _$TokensResponseCopyWith<$Res> implements $TokensResponseCopyWith<$Res> {
+abstract class _$TokensResponseCopyWith<$Res>
+    implements $TokensResponseCopyWith<$Res> {
   factory _$TokensResponseCopyWith(_TokensResponse value, $Res Function(_TokensResponse) then) =
-      __$TokensResponseCopyWithImpl<$Res>;
+  __$TokensResponseCopyWithImpl<$Res>;
 
   @override
-  $Res call(
-      {@JsonKey(name: 'access_token') String accessToken,
-      @JsonKey(name: 'token_type') String tokenType,
-      @JsonKey(name: 'refresh_token') String refreshToken,
-      @JsonKey(name: 'expires_in') int expiresIn,
-      String scope});
+  $Res call({@JsonKey(name: 'access_token') String accessToken,
+    @JsonKey(name: 'token_type') String tokenType,
+    @JsonKey(name: 'refresh_token') String refreshToken,
+    @JsonKey(name: 'expires_in') int expiresIn,
+    String scope});
 }
 
 class __$TokensResponseCopyWithImpl<$Res> extends _$TokensResponseCopyWithImpl<$Res>
@@ -123,9 +121,12 @@ class __$TokensResponseCopyWithImpl<$Res> extends _$TokensResponseCopyWithImpl<$
     Object scope = freezed,
   }) {
     return _then(_TokensResponse(
-      accessToken: accessToken == freezed ? _value.accessToken : accessToken as String,
+      accessToken:
+      accessToken == freezed ? _value.accessToken : accessToken as String,
       tokenType: tokenType == freezed ? _value.tokenType : tokenType as String,
-      refreshToken: refreshToken == freezed ? _value.refreshToken : refreshToken as String,
+      refreshToken: refreshToken == freezed
+          ? _value.refreshToken
+          : refreshToken as String,
       expiresIn: expiresIn == freezed ? _value.expiresIn : expiresIn as int,
       scope: scope == freezed ? _value.scope : scope as String,
     ));
@@ -136,17 +137,18 @@ class __$TokensResponseCopyWithImpl<$Res> extends _$TokensResponseCopyWithImpl<$
 class _$_TokensResponse implements _TokensResponse {
   const _$_TokensResponse(
       {@required @JsonKey(name: 'access_token') this.accessToken,
-      @required @JsonKey(name: 'token_type') this.tokenType,
-      @required @JsonKey(name: 'refresh_token') this.refreshToken,
-      @required @JsonKey(name: 'expires_in') this.expiresIn,
-      @required this.scope})
+        @required @JsonKey(name: 'token_type') this.tokenType,
+        @required @JsonKey(name: 'refresh_token') this.refreshToken,
+        @required @JsonKey(name: 'expires_in') this.expiresIn,
+        @required this.scope})
       : assert(accessToken != null),
         assert(tokenType != null),
         assert(refreshToken != null),
         assert(expiresIn != null),
         assert(scope != null);
 
-  factory _$_TokensResponse.fromJson(Map<String, dynamic> json) => _$_$_TokensResponseFromJson(json);
+  factory _$_TokensResponse.fromJson(Map<String, dynamic> json) =>
+      _$_$_TokensResponseFromJson(json);
 
   @override
   @JsonKey(name: 'access_token')
@@ -173,14 +175,19 @@ class _$_TokensResponse implements _TokensResponse {
     return identical(this, other) ||
         (other is _TokensResponse &&
             (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality().equals(other.accessToken, accessToken)) &&
+                const DeepCollectionEquality()
+                    .equals(other.accessToken, accessToken)) &&
             (identical(other.tokenType, tokenType) ||
-                const DeepCollectionEquality().equals(other.tokenType, tokenType)) &&
+                const DeepCollectionEquality()
+                    .equals(other.tokenType, tokenType)) &&
             (identical(other.refreshToken, refreshToken) ||
-                const DeepCollectionEquality().equals(other.refreshToken, refreshToken)) &&
+                const DeepCollectionEquality()
+                    .equals(other.refreshToken, refreshToken)) &&
             (identical(other.expiresIn, expiresIn) ||
-                const DeepCollectionEquality().equals(other.expiresIn, expiresIn)) &&
-            (identical(other.scope, scope) || const DeepCollectionEquality().equals(other.scope, scope)));
+                const DeepCollectionEquality()
+                    .equals(other.expiresIn, expiresIn)) &&
+            (identical(other.scope, scope) ||
+                const DeepCollectionEquality().equals(other.scope, scope)));
   }
 
   @override
@@ -203,14 +210,14 @@ class _$_TokensResponse implements _TokensResponse {
 }
 
 abstract class _TokensResponse implements TokensResponse {
-  const factory _TokensResponse(
-      {@required @JsonKey(name: 'access_token') String accessToken,
-      @required @JsonKey(name: 'token_type') String tokenType,
-      @required @JsonKey(name: 'refresh_token') String refreshToken,
-      @required @JsonKey(name: 'expires_in') int expiresIn,
-      @required String scope}) = _$_TokensResponse;
+  const factory _TokensResponse({@required @JsonKey(name: 'access_token') String accessToken,
+    @required @JsonKey(name: 'token_type') String tokenType,
+    @required @JsonKey(name: 'refresh_token') String refreshToken,
+    @required @JsonKey(name: 'expires_in') int expiresIn,
+    @required String scope}) = _$_TokensResponse;
 
-  factory _TokensResponse.fromJson(Map<String, dynamic> json) = _$_TokensResponse.fromJson;
+  factory _TokensResponse.fromJson(Map<String, dynamic> json) =
+  _$_TokensResponse.fromJson;
 
   @override
   @JsonKey(name: 'access_token')
@@ -223,14 +230,11 @@ abstract class _TokensResponse implements TokensResponse {
   @override
   @JsonKey(name: 'refresh_token')
   String get refreshToken;
-
   @override
   @JsonKey(name: 'expires_in')
   int get expiresIn;
-
   @override
   String get scope;
-
   @override
   _$TokensResponseCopyWith<_TokensResponse> get copyWith;
 }

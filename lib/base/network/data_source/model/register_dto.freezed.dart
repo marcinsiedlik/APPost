@@ -8,7 +8,6 @@ part of 'register_dto.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-
 RegisterDto _$RegisterDtoFromJson(Map<String, dynamic> json) {
   return _RegisterDto.fromJson(json);
 }
@@ -41,21 +40,14 @@ const $RegisterDto = _$RegisterDtoTearOff();
 
 mixin _$RegisterDto {
   String get email;
-
   String get nick;
-
   String get password;
-
   String get repeatedPassword;
-
   String get firstName;
-
   String get lastName;
-
   String get place;
 
   Map<String, dynamic> toJson();
-
   $RegisterDtoCopyWith<RegisterDto> get copyWith;
 }
 
@@ -76,7 +68,6 @@ class _$RegisterDtoCopyWithImpl<$Res> implements $RegisterDtoCopyWith<$Res> {
   _$RegisterDtoCopyWithImpl(this._value, this._then);
 
   final RegisterDto _value;
-
   // ignore: unused_field
   final $Res Function(RegisterDto) _then;
 
@@ -94,7 +85,9 @@ class _$RegisterDtoCopyWithImpl<$Res> implements $RegisterDtoCopyWith<$Res> {
       email: email == freezed ? _value.email : email as String,
       nick: nick == freezed ? _value.nick : nick as String,
       password: password == freezed ? _value.password : password as String,
-      repeatedPassword: repeatedPassword == freezed ? _value.repeatedPassword : repeatedPassword as String,
+      repeatedPassword: repeatedPassword == freezed
+          ? _value.repeatedPassword
+          : repeatedPassword as String,
       firstName: firstName == freezed ? _value.firstName : firstName as String,
       lastName: lastName == freezed ? _value.lastName : lastName as String,
       place: place == freezed ? _value.place : place as String,
@@ -102,22 +95,23 @@ class _$RegisterDtoCopyWithImpl<$Res> implements $RegisterDtoCopyWith<$Res> {
   }
 }
 
-abstract class _$RegisterDtoCopyWith<$Res> implements $RegisterDtoCopyWith<$Res> {
+abstract class _$RegisterDtoCopyWith<$Res>
+    implements $RegisterDtoCopyWith<$Res> {
   factory _$RegisterDtoCopyWith(_RegisterDto value, $Res Function(_RegisterDto) then) =
-      __$RegisterDtoCopyWithImpl<$Res>;
+  __$RegisterDtoCopyWithImpl<$Res>;
 
   @override
-  $Res call(
-      {String email,
-      String nick,
-      String password,
-      String repeatedPassword,
-      String firstName,
-      String lastName,
-      String place});
+  $Res call({String email,
+    String nick,
+    String password,
+    String repeatedPassword,
+    String firstName,
+    String lastName,
+    String place});
 }
 
-class __$RegisterDtoCopyWithImpl<$Res> extends _$RegisterDtoCopyWithImpl<$Res> implements _$RegisterDtoCopyWith<$Res> {
+class __$RegisterDtoCopyWithImpl<$Res> extends _$RegisterDtoCopyWithImpl<$Res>
+    implements _$RegisterDtoCopyWith<$Res> {
   __$RegisterDtoCopyWithImpl(_RegisterDto _value, $Res Function(_RegisterDto) _then)
       : super(_value, (v) => _then(v as _RegisterDto));
 
@@ -138,7 +132,9 @@ class __$RegisterDtoCopyWithImpl<$Res> extends _$RegisterDtoCopyWithImpl<$Res> i
       email: email == freezed ? _value.email : email as String,
       nick: nick == freezed ? _value.nick : nick as String,
       password: password == freezed ? _value.password : password as String,
-      repeatedPassword: repeatedPassword == freezed ? _value.repeatedPassword : repeatedPassword as String,
+      repeatedPassword: repeatedPassword == freezed
+          ? _value.repeatedPassword
+          : repeatedPassword as String,
       firstName: firstName == freezed ? _value.firstName : firstName as String,
       lastName: lastName == freezed ? _value.lastName : lastName as String,
       place: place == freezed ? _value.place : place as String,
@@ -148,10 +144,16 @@ class __$RegisterDtoCopyWithImpl<$Res> extends _$RegisterDtoCopyWithImpl<$Res> i
 
 @JsonSerializable()
 class _$_RegisterDto implements _RegisterDto {
-  const _$_RegisterDto(
-      {this.email, this.nick, this.password, this.repeatedPassword, this.firstName, this.lastName, this.place});
+  const _$_RegisterDto({this.email,
+    this.nick,
+    this.password,
+    this.repeatedPassword,
+    this.firstName,
+    this.lastName,
+    this.place});
 
-  factory _$_RegisterDto.fromJson(Map<String, dynamic> json) => _$_$_RegisterDtoFromJson(json);
+  factory _$_RegisterDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_RegisterDtoFromJson(json);
 
   @override
   final String email;
@@ -177,15 +179,24 @@ class _$_RegisterDto implements _RegisterDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RegisterDto &&
-            (identical(other.email, email) || const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.nick, nick) || const DeepCollectionEquality().equals(other.nick, nick)) &&
-            (identical(other.password, password) || const DeepCollectionEquality().equals(other.password, password)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.nick, nick) ||
+                const DeepCollectionEquality().equals(other.nick, nick)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)) &&
             (identical(other.repeatedPassword, repeatedPassword) ||
-                const DeepCollectionEquality().equals(other.repeatedPassword, repeatedPassword)) &&
+                const DeepCollectionEquality()
+                    .equals(other.repeatedPassword, repeatedPassword)) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality().equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) || const DeepCollectionEquality().equals(other.lastName, lastName)) &&
-            (identical(other.place, place) || const DeepCollectionEquality().equals(other.place, place)));
+                const DeepCollectionEquality()
+                    .equals(other.firstName, firstName)) &&
+            (identical(other.lastName, lastName) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastName, lastName)) &&
+            (identical(other.place, place) ||
+                const DeepCollectionEquality().equals(other.place, place)));
   }
 
   @override
@@ -200,7 +211,8 @@ class _$_RegisterDto implements _RegisterDto {
       const DeepCollectionEquality().hash(place);
 
   @override
-  _$RegisterDtoCopyWith<_RegisterDto> get copyWith => __$RegisterDtoCopyWithImpl<_RegisterDto>(this, _$identity);
+  _$RegisterDtoCopyWith<_RegisterDto> get copyWith =>
+      __$RegisterDtoCopyWithImpl<_RegisterDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -209,16 +221,16 @@ class _$_RegisterDto implements _RegisterDto {
 }
 
 abstract class _RegisterDto implements RegisterDto {
-  const factory _RegisterDto(
-      {String email,
-      String nick,
-      String password,
-      String repeatedPassword,
-      String firstName,
-      String lastName,
-      String place}) = _$_RegisterDto;
+  const factory _RegisterDto({String email,
+    String nick,
+    String password,
+    String repeatedPassword,
+    String firstName,
+    String lastName,
+    String place}) = _$_RegisterDto;
 
-  factory _RegisterDto.fromJson(Map<String, dynamic> json) = _$_RegisterDto.fromJson;
+  factory _RegisterDto.fromJson(Map<String, dynamic> json) =
+  _$_RegisterDto.fromJson;
 
   @override
   String get email;
@@ -234,13 +246,10 @@ abstract class _RegisterDto implements RegisterDto {
 
   @override
   String get firstName;
-
   @override
   String get lastName;
-
   @override
   String get place;
-
   @override
   _$RegisterDtoCopyWith<_RegisterDto> get copyWith;
 }

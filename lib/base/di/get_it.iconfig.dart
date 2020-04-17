@@ -12,6 +12,7 @@ import 'package:appost/base/network/tokens/repository/refresh_token_repository.d
 import 'package:appost/base/network/tokens/repository/refresh_token_repository_impl.dart';
 import 'package:appost/base/network/tokens/service/refresh_token_service.dart';
 import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
+import 'package:appost/feature/login/login_notifier.dart';
 import 'package:auto_route/src/extended_navigator.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -23,6 +24,7 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<Dio>(() => networkModule.dio);
   g.registerLazySingleton<Dio>(() => networkModule.tokenDio, instanceName: 'tokenClient');
   g.registerLazySingleton<ExtendedNavigator<RouterBase>>(() => utilModule.navigatorBuilder);
+  g.registerFactory<LoginNotifier>(() => LoginNotifier());
   g.registerLazySingleton<RefreshTokenService>(() => RefreshTokenService(g<Dio>(instanceName: 'tokenClient')));
   g.registerLazySingleton<RegisterRepo>(() => RegisterRepo());
   g.registerLazySingleton<RestService>(() => RestService(g<Dio>()));
