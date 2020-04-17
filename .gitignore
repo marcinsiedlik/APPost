@@ -37,6 +37,7 @@ lib/generated_plugin_registrant.dart
 *.g.dart
 *.gr.dart
 *.freezed.dart
+*.iconfig.dart
 *.chopper.dart
 
 # Symbolication related
