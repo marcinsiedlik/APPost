@@ -15,7 +15,9 @@ class LoginNotifier extends BaseNotifier {
 
   var loginState = CallState<String>();
 
-  void onLoginClicked() {}
+  void onLoginClicked() {
+    if (formKey.currentState.validate()) {}
+  }
 
   void onRegisterClicked() {
     loginState = CallState.progress();

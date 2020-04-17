@@ -12,6 +12,7 @@ class LoginForm extends StatelessWidget with FormValidationsMixin {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Form(
+        key: notifier.formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
@@ -52,7 +53,10 @@ class LoginForm extends StatelessWidget with FormValidationsMixin {
       obscureText: true,
       cursorColor: AppColors.colorPrimary,
       validator: (field) => validatePassword(context, field),
-      onEditingComplete: () => FocusScope.of(context).requestFocus(FocusNode()),
+      onEditingComplete: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+        notifier.onLoginClicked();
+      },
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock_outline),
         border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(12))),
