@@ -1,4 +1,5 @@
 import 'package:appost/base/di/get_it.dart';
+import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/localization/app_localizations.dart';
 import 'package:appost/base/ui/localization/resolution_callbacks.dart' as resolutionCallbacks;
 import 'package:auto_route/auto_route.dart';
@@ -10,13 +11,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ApPost',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      supportedLocales: [
-        const Locale('pl'),
-      ],
+      theme: AppThemes.light,
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

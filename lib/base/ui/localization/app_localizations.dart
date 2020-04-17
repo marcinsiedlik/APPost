@@ -22,6 +22,10 @@ class AppLocalizations {
 
   String get(String key) => _localizedStrings[key];
 
+  static const List<Locale> supportedLocales = [
+    const Locale('pl'),
+  ];
+
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   static AppLocalizations of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations);
@@ -30,8 +34,10 @@ class AppLocalizations {
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
+  List<String> get supportedLocalesLangCodes => AppLocalizations.supportedLocales.map((e) => e.languageCode).toList();
+
   @override
-  bool isSupported(Locale locale) => ['pl'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => supportedLocalesLangCodes.contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) async {
