@@ -22,22 +22,6 @@ class LoginScreen extends StatelessWidget {
               _buildButtonsSection(context),
             ],
           ),
-//          child: Column(
-//            children: <Widget>[
-//              Flexible(
-//                flex: 3,
-//                child: Container(
-//                  alignment: Alignment.center,
-//                  child: _buildLoginHeader(context),
-//                ),
-//              ),
-//              LoginForm(),
-//              Flexible(
-//                flex: 3,
-//                child: _buildButtonsSection(context),
-//              ),
-//            ],
-//          ),
         ),
       ),
     );
@@ -69,22 +53,30 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _buildButtonsSection(BuildContext context) {
-    return Container(
-      alignment: Alignment.topLeft,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          BigButton(
-            labelKey: 'sign_in',
-            onPressed: () {},
-          ),
-          BigButton(
-            color: AppColors.colorAccent,
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            labelKey: 'register_invite',
-            onPressed: () {},
-          ),
-        ],
+    return Consumer<LoginNotifier>(
+      builder: (context, notifier, _) => Container(
+        alignment: Alignment.topLeft,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            notifier.loginState.whenOrElse(
+              progress: () => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 26),
+                child: CircularProgressIndicator(),
+              ),
+              orElse: () => BigButton(
+                labelKey: 'sign_in',
+                onPressed: notifier.onLoginClicked,
+              ),
+            ),
+            BigButton(
+              color: AppColors.colorAccent,
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              labelKey: 'register_invite',
+              onPressed: notifier.onRegisterClicked,
+            ),
+          ],
+        ),
       ),
     );
   }
