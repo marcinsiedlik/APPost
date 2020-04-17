@@ -6,8 +6,7 @@
 
 import 'package:appost/base/di/network_module.dart';
 import 'package:appost/base/di/util_module.dart';
-import 'package:appost/base/network/data_source/repository/register_repo.dart';
-import 'package:appost/base/network/data_source/service/rest_service.dart';
+import 'package:appost/base/network/data_source/service/user_service.dart';
 import 'package:appost/base/network/tokens/repository/refresh_token_repository.dart';
 import 'package:appost/base/network/tokens/repository/refresh_token_repository_impl.dart';
 import 'package:appost/base/network/tokens/service/refresh_token_service.dart';
@@ -26,8 +25,7 @@ Future<void> $initGetIt(GetIt g, {String environment}) async {
   g.registerLazySingleton<ExtendedNavigator<RouterBase>>(() => utilModule.navigatorBuilder);
   g.registerFactory<LoginNotifier>(() => LoginNotifier());
   g.registerLazySingleton<RefreshTokenService>(() => RefreshTokenService(g<Dio>(instanceName: 'tokenClient')));
-  g.registerLazySingleton<RegisterRepo>(() => RegisterRepo());
-  g.registerLazySingleton<RestService>(() => RestService(g<Dio>()));
+  g.registerLazySingleton<UserService>(() => UserService(g<Dio>()));
   g.registerLazySingleton<OauthTokensStorage>(() => OauthTokensStorage(g<SharedPreferences>()));
   g.registerLazySingleton<RefreshTokenRepository>(() => RefreshTokenRepositoryImpl(g<RefreshTokenService>()));
 
