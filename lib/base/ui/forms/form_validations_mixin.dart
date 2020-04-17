@@ -74,7 +74,7 @@ mixin AppFormsMixin {
     if (field.length < 6) {
       return localizations.get('password_to_short');
     }
-    if (field == passwordFiled) {
+    if (field != passwordFiled) {
       return localizations.get('passwords_not_equal');
     }
     return null;
