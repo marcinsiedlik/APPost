@@ -30,7 +30,10 @@ class RegisterNotifier extends BaseNotifier {
     dispatch(
       callState: registerState,
       block: () => _userRepository.register(_createRegisterModel()),
-      onSuccess: (data) => ExtendedNavigator.rootNavigator.pop(),
+      onSuccess: (data) {
+        ExtendedNavigator.rootNavigator.pop();
+        RouterExtensions.showInfoFlushbar('register_completed');
+      },
       onError: RouterExtensions.showErrorFlushbar,
     );
   }

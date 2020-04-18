@@ -28,6 +28,6 @@
   "last_name": "Nazwisko",
   "too_short_nick": "Zbyt krótki pseudonim",
   "place": "Lokalizacja",
-  "register_in": "Zarejestruj się"
-
+  "register_in": "Zarejestruj się",
+  "register_completed": "Konto utworzone pomyślnie"
 }
