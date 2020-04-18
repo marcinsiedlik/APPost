@@ -21,16 +21,16 @@ class ErrorFlushbar extends Flushbar {
             titleText: Text(
               AppLocalizations.of(context).get('error_flushbar_title'),
               style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
                 color: Colors.white,
               ),
             ),
             messageText: Text(
               _resolveErrorMessage(context, exception),
               style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                fontSize: 15,
                 color: Colors.white,
               ),
             ),

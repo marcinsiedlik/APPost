@@ -23,20 +23,20 @@ abstract class BaseRepository {
     } catch (e) {
       return DefaultException(null, null, null);
     }
-    final errorCode = errorResponse.code.toString() ?? response.statusCode.toString();
-    final printableMessage = errorResponse.printableMessage;
-    final developerMessage = errorResponse.developerMessage ?? "NO_DEVELOPER_MESSAGE";
+    final errorCode = errorResponse.status ?? response.statusCode;
+    final printableMessage = errorResponse.message;
+    final developerMessage = errorResponse.error ?? "NO_DEVELOPER_MESSAGE";
 
     switch (errorCode) {
-      case 'invalid_request':
+      case 400:
         return WrongCredentialsException(errorCode, printableMessage, developerMessage);
-      case '401':
+      case 401:
         return UnauthorizedException(errorCode, printableMessage, developerMessage);
-      case '404':
+      case 404:
         return NotFoundException(errorCode, printableMessage, developerMessage);
-      case '422':
+      case 422:
         return BadValidationException(errorCode, printableMessage, developerMessage);
-      case '500':
+      case 500:
         return InternalServerException(errorCode, printableMessage, developerMessage);
       default:
         return DefaultException(errorCode, printableMessage, developerMessage);

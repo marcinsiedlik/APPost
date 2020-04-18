@@ -44,6 +44,7 @@ class LoginForm extends StatelessWidget with AppFormsMixin {
       node: notifier.passwordField.focusNode,
       keyboardType: TextInputType.visiblePassword,
       textInputAction: TextInputAction.go,
+      obscureText: true,
       validator: (field) => validatePassword(context, field),
       onEditingComplete: () {
         FocusScope.of(context).requestFocus(FocusNode());

@@ -8,10 +8,10 @@ class ConnectivityInterceptor extends InterceptorsWrapper {
   Future onRequest(RequestOptions options) async {
     if (await Connectivity().checkConnectivity() != ConnectivityResult.none) {
       if (!await DataConnectionChecker().hasConnection) {
-        throw ConnectivityException("-1", null, "No internet connection");
+        throw ConnectivityException(-1, null, "No internet connection");
       }
     } else {
-      throw ConnectivityException("-1", null, "No internet connection");
+      throw ConnectivityException(-1, null, "No internet connection");
     }
     return options;
   }

@@ -32,7 +32,7 @@ class RefreshTokenInterceptor extends InterceptorsWrapper {
     final repository = getIt<RefreshTokenRepository>();
 
     if (refreshToken == null) {
-      return Future.error(UnauthorizedException('401', null, null));
+      return Future.error(UnauthorizedException(401, null, null));
     }
     return repository.refreshTokens(refreshToken);
   }
