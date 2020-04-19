@@ -1,4 +1,5 @@
 import 'package:appost/base/annotations/retrofit_annotations.dart';
+import 'package:appost/base/network/data_source/model/user/network/network_user.dart';
 import 'package:appost/base/network/data_source/model/user/network/register_model.dart';
 import 'package:appost/base/network/tokens/model/tokens_response.dart';
 import 'package:dio/dio.dart';
@@ -21,6 +22,14 @@ abstract class UserService {
 
   @POST('/user/register')
   Future<void> register(@Body() RegisterModel model);
+
+  @secured
+  @GET('/user/info')
+  Future<NetworkUser> getLoggedUserInfo();
+
+  @secured
+  @GET('/user/{id}')
+  Future<NetworkUser> getUserInfo(@Path('id') int userId);
 
   @factoryMethod
   factory UserService(Dio dio) = _UserService;

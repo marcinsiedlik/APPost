@@ -1,3 +1,4 @@
+import 'package:appost/base/network/data_source/model/user/network/network_user.dart';
 import 'package:appost/base/network/data_source/model/user/network/register_model.dart';
 import 'package:appost/base/network/data_source/repository/user/user_repository.dart';
 import 'package:appost/base/network/data_source/service/user/user_service.dart';
@@ -22,5 +23,11 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository {
       call(() => _service.login(email, password, headers.passwordGrantType));
 
   @override
-  Future<void> register(RegisterModel model) => call(() => _service.register(model));
+  Future<void> register({@required RegisterModel model}) => call(() => _service.register(model));
+
+  @override
+  Future<NetworkUser> getLoggedUserInfo() => call(() => _service.getLoggedUserInfo());
+
+  @override
+  Future<NetworkUser> getUserInfo({@required int userId}) => call(() => _service.getUserInfo(userId));
 }
