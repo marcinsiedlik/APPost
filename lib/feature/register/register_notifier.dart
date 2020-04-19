@@ -1,5 +1,5 @@
 import 'package:appost/base/extensions/router_extensions.dart';
-import 'package:appost/base/network/data_source/model/user/register_model.dart';
+import 'package:appost/base/network/data_source/model/user/network/register_model.dart';
 import 'package:appost/base/network/data_source/repository/user/user_repository.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/forms/form_field_controller.dart';

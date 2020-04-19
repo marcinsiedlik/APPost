@@ -1,4 +1,4 @@
-import 'package:appost/base/network/data_source/model/user/register_model.dart';
+import 'package:appost/base/network/data_source/model/user/network/register_model.dart';
 import 'package:appost/base/network/data_source/repository/user/user_repository.dart';
 import 'package:appost/base/network/data_source/service/user/user_service.dart';
 import 'package:appost/base/network/headers/network_headers.dart' as headers;
