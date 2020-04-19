@@ -9,7 +9,7 @@ class PostUiMapper implements UiMapper<NetworkPost, UiPost> {
   UiPost mapToUi(NetworkPost network) => UiPost(
         id: network.id,
         userNick: network.userNick,
-        creationDate: DateTime.fromMillisecondsSinceEpoch(network.creationDate),
+        creationDate: DateTime.tryParse(network.creationDate),
         description: network.description,
       );
 }

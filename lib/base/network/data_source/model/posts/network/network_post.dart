@@ -8,7 +8,7 @@ abstract class NetworkPost with _$NetworkPost {
   const factory NetworkPost({
     @required int id,
     @required String userNick,
-    @required int creationDate,
+    @required String creationDate,
     @required String description,
   }) = _NetworkPost;
 
