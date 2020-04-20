@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return NotifierExtension.buildWithConsumer<PostsNotifier>(
+    return NotifierExtension.createWithConsumer(
       create: (_) => getIt<PostsNotifier>(),
       builder: _buildPageLayout,
     );
@@ -21,7 +21,7 @@ class PostsScreen extends StatelessWidget {
           initial: () => Container(),
           progress: () => Center(child: CircularProgressIndicator()),
           success: (user) => _buildScrollView(context, notifier, user),
-          error: null,
+          error: (_) => Container(),
         ),
       ),
     );
@@ -29,6 +29,7 @@ class PostsScreen extends StatelessWidget {
 
   Widget _buildScrollView(BuildContext context, PostsNotifier notifier, UiUser user) {
     return CustomScrollView(
+      controller: notifier.pagedScrollController,
       slivers: <Widget>[
         PostsAppBar(
           userTitle: user.firstName,

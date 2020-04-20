@@ -1,6 +1,11 @@
+import 'package:appost/base/di/get_it.dart';
+import 'package:appost/base/network/exceptions/api_exception.dart';
+import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/call_state/paged_call_state.dart';
+import 'package:appost/base/ui/routes/router.gr.dart';
 import 'package:appost/main.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class BaseNotifier with ChangeNotifier {
@@ -87,6 +92,10 @@ abstract class BaseNotifier with ChangeNotifier {
     } on Error catch (e, st) {
       logger.e('Dispatch error: ', e, st);
     } catch (e, st) {
+      if (e is UnauthorizedException) {
+        _clearTokensAndNavigateToLoginScreen();
+        return;
+      }
       logger.e('Dispatch exception: ', e.runtimeType, st);
       onError?.call(e);
       if (callState != null) {
@@ -110,5 +119,10 @@ abstract class BaseNotifier with ChangeNotifier {
   void _updatePagedStatusAndNotify(PagedCallState callState, PagedStatus status) {
     callState.status = status;
     notifyListeners();
+  }
+
+  void _clearTokensAndNavigateToLoginScreen() {
+    getIt<OauthTokensStorage>().clearTokens();
+    ExtendedNavigator.ofRouter<Router>().pushNamedAndRemoveUntil(Routes.loginScreen, (_) => false);
   }
 }

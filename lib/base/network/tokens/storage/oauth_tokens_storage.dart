@@ -14,6 +14,8 @@ class OauthTokensStorage {
 
   String get refreshToken => _prefs.getString(_refreshTokenKey);
 
+  bool get areTokensPresent => accessToken != null && refreshToken != null;
+
   void saveTokens(String accessToken, String refreshToken) async {
     _prefs.setString(_accessTokenKey, accessToken);
     _prefs.setString(_refreshTokenKey, refreshToken);

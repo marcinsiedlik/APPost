@@ -5,7 +5,7 @@ import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/forms/form_field_controller.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
-import 'package:appost/base/ui/routes/cupertiono_router.gr.dart';
+import 'package:appost/base/ui/routes/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
@@ -38,7 +38,7 @@ class LoginNotifier extends BaseNotifier {
 
   void _onLoginSuccess(TokensResponse response) {
     _tokensStorage.saveTokens(response.accessToken, response.refreshToken);
-    ExtendedNavigator.rootNavigator.pushNamedAndRemoveUntil(Routes.postsScreen, (route) => false);
+    ExtendedNavigator.ofRouter<Router>().pushNamedAndRemoveUntil(Routes.postsScreen, (route) => false);
   }
 
   void onLoginClicked() {
@@ -48,7 +48,7 @@ class LoginNotifier extends BaseNotifier {
   }
 
   void onRegisterClicked() {
-    ExtendedNavigator.rootNavigator.pushNamed(Routes.registerScreen);
+    ExtendedNavigator.ofRouter<Router>().pushRegisterScreen();
   }
 
   @override
