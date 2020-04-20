@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:appost/base/extensions/router_extensions.dart';
 import 'package:appost/base/network/data_source/mapper/posts/post_response_ui_mapper.dart';
 import 'package:appost/base/network/data_source/mapper/user/user_ui_mapper.dart';
@@ -29,6 +31,7 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
 
   var userCallState = CallState<UiUser>();
   var postsCallState = PagedCallState<UiPostResponse>();
+  var refreshCompleter = Completer<void>();
 
   var filterText = '';
 
@@ -58,11 +61,21 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
         return _postUiMapper.mapToUi(posts);
       },
       onSuccess: (data) {
+        refreshCompleter.complete();
         onPagedRequestSuccess(first: data.first, last: data.last);
         posts.addAll(data.posts);
       },
-      onError: RouterExtensions.showErrorFlushbar,
+      onError: (e) {
+        refreshCompleter.complete();
+        RouterExtensions.showErrorFlushbar(e);
+      },
     );
+  }
+
+  Future<void> onRefreshed() {
+    _updateFilterAndCallRequest();
+    refreshCompleter = Completer<void>();
+    return refreshCompleter.future;
   }
 
   void onAvatarClicked() {}

@@ -7,5 +7,6 @@ import 'package:auto_route/auto_route_annotations.dart';
 abstract class $Router {
   LoginScreen loginScreen;
   RegisterScreen registerScreen;
+  @initial
   PostsScreen postsScreen;
 }

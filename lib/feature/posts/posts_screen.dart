@@ -28,15 +28,31 @@ class PostsScreen extends StatelessWidget {
   }
 
   Widget _buildScrollView(BuildContext context, PostsNotifier notifier, UiUser user) {
-    return CustomScrollView(
-      controller: notifier.pagedScrollController,
-      slivers: <Widget>[
-        PostsAppBar(
-          userTitle: user.firstName,
-          onSearchChanged: notifier.onSearchChanged,
-          onAvatarClicked: notifier.onAvatarClicked,
-        ),
-      ],
+    return RefreshIndicator(
+      displacement: 120,
+      child: CustomScrollView(
+        controller: notifier.pagedScrollController,
+        slivers: <Widget>[
+          PostsAppBar(
+            userTitle: user.firstName,
+            onSearchChanged: notifier.onSearchChanged,
+            onAvatarClicked: notifier.onAvatarClicked,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Padding(
+                padding: EdgeInsets.all(16),
+                child: Container(
+                  color: Colors.blueGrey,
+                  height: 100,
+                ),
+              ),
+              childCount: 20,
+            ),
+          )
+        ],
+      ),
+      onRefresh: notifier.onRefreshed,
     );
   }
 }

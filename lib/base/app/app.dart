@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       ],
       localeListResolutionCallback: resolutionCallbacks.getSupportedListLocale,
       localeResolutionCallback: resolutionCallbacks.getSupportedLocale,
-      builder: ExtendedNavigator<Router>(router: Router(), initialRoute: Routes.postsScreen),
+      builder: ExtendedNavigator<Router>(router: Router()),
     );
   }
 }
