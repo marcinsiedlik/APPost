@@ -46,6 +46,28 @@ class PagedCallState<T> {
   }
 
   // ignore: missing_return
+  R whenInitialOrElse<R>({
+    R initial(),
+    R progress(),
+    R success(T data),
+    R error(Exception exception),
+    @required R orElse(),
+  }) {
+    switch (this.status) {
+      case PagedStatus.INITIAL:
+        return initial?.call() ?? orElse();
+      case PagedStatus.INITIAL_PROGRESS:
+        return progress?.call() ?? orElse();
+      case PagedStatus.INITIAL_SUCCESS:
+        return success?.call(data) ?? orElse();
+      case PagedStatus.INITIAL_ERROR:
+        return error?.call(exception) ?? orElse();
+      default:
+        return success?.call(data) ?? orElse();
+    }
+  }
+
+  // ignore: missing_return
   R whenAdditional<R>({
     @required R progress(),
     R success(T data),

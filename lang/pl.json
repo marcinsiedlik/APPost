@@ -32,5 +32,8 @@
   "register_completed": "Konto utworzone pomyślnie",
   "session_expired": "Sesja wygasła, zaloguj się ponownie",
   "welcome": "Witaj,",
-  "search_nick": "Wyszukaj pseudonim"
+  "search_nick": "Wyszukaj pseudonim",
+  "error_occurred": "Wystąpił błąd",
+  "nothing_is_here": "Nic tu nie ma",
+  "posts_fetch_error": "Podczas pobierania postów wystąpił nieoczekiwany błąd. Pociągnij palcem od góry ekranu aby spróbować ponownie."
 }

@@ -1,6 +1,7 @@
 import 'package:appost/base/di/get_it.dart';
 import 'package:appost/base/extensions/notifier_extensions.dart';
 import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
+import 'package:appost/base/ui/widgets/error_view.dart';
 import 'package:appost/feature/posts/posts_notifier.dart';
 import 'package:appost/feature/posts/widget/posts_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -38,18 +39,13 @@ class PostsScreen extends StatelessWidget {
             onSearchChanged: notifier.onSearchChanged,
             onAvatarClicked: notifier.onAvatarClicked,
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Padding(
-                padding: EdgeInsets.all(16),
-                child: Container(
-                  color: Colors.blueGrey,
-                  height: 100,
-                ),
-              ),
-              childCount: 20,
+          notifier.postsCallState.whenInitialOrElse(
+            success: null,
+            error: (_) => SliverFillRemaining(
+              child: ErrorView(messageKey: 'posts_fetch_error'),
             ),
-          )
+            orElse: () => SliverFillRemaining(),
+          ),
         ],
       ),
       onRefresh: notifier.onRefreshed,
