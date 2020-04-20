@@ -6,6 +6,8 @@ import 'package:appost/base/network/headers/network_headers.dart' as headers;
 import 'package:appost/base/network/tokens/model/tokens_response.dart';
 import 'package:appost/base/network/tokens/repository/refresh_token_repository.dart';
 import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
+import 'package:appost/base/ui/routes/cupertiono_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 
 class RefreshTokenInterceptor extends InterceptorsWrapper {
@@ -17,12 +19,14 @@ class RefreshTokenInterceptor extends InterceptorsWrapper {
   @override
   Future onError(DioError err) async {
     if (!_isUnauthorizedError(err)) {
+      _clearAndNavigateToLoginScreen();
       return err;
     }
     try {
       final refreshResponse = await _refreshTokens(_tokensStorage.refreshToken);
       _saveTokens(refreshResponse);
     } catch (e) {
+      _clearAndNavigateToLoginScreen();
       return err;
     }
     return _createUpdatedRequest(err.request);
@@ -51,4 +55,8 @@ class RefreshTokenInterceptor extends InterceptorsWrapper {
         queryParameters: request.queryParameters,
         options: request..headers[headers.authorizationKey] = '${headers.bearerPrefix} ${_tokensStorage.accessToken}',
       );
+
+  void _clearAndNavigateToLoginScreen() {
+    ExtendedNavigator.rootNavigator.pushNamedAndRemoveUntil(Routes.loginScreen, (route) => false);
+  }
 }

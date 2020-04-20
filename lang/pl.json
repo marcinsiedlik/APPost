@@ -29,5 +29,8 @@
   "too_short_nick": "Zbyt krótki pseudonim",
   "place": "Lokalizacja",
   "register_in": "Zarejestruj się",
-  "register_completed": "Konto utworzone pomyślnie"
+  "register_completed": "Konto utworzone pomyślnie",
+  "session_expired": "Sesja wygasła, zaloguj się ponownie",
+  "welcome": "Witaj,",
+  "search_nick": "Wyszukaj pseudonim"
 }
