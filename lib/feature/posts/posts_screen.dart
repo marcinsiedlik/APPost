@@ -1,41 +1,41 @@
 import 'package:appost/base/di/get_it.dart';
+import 'package:appost/base/extensions/notifier_extensions.dart';
+import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
 import 'package:appost/feature/posts/posts_notifier.dart';
 import 'package:appost/feature/posts/widget/posts_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return NotifierExtension.buildWithConsumer<PostsNotifier>(
       create: (_) => getIt<PostsNotifier>(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Consumer<PostsNotifier>(
-            builder: (context, notifier, _) => CustomScrollView(
-              slivers: <Widget>[
-                PostsAppBar(
-                  userTitle: 'Marcin',
-                  onSearchChanged: (text) {},
-                  onAvatarClicked: () {},
-                ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Container(
-                        height: 100,
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                    childCount: notifier.list.length,
-                  ),
-                ),
-              ],
-            ),
-          ),
+      builder: _buildPageLayout,
+    );
+  }
+
+  Widget _buildPageLayout(BuildContext context, PostsNotifier notifier, Widget _) {
+    return Scaffold(
+      body: SafeArea(
+        child: notifier.userCallState.when(
+          initial: () => Container(),
+          progress: () => Center(child: CircularProgressIndicator()),
+          success: (user) => _buildScrollView(context, notifier, user),
+          error: null,
         ),
       ),
+    );
+  }
+
+  Widget _buildScrollView(BuildContext context, PostsNotifier notifier, UiUser user) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        PostsAppBar(
+          userTitle: user.firstName,
+          onSearchChanged: notifier.onSearchChanged,
+          onAvatarClicked: notifier.onAvatarClicked,
+        ),
+      ],
     );
   }
 }

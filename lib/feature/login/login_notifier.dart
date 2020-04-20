@@ -31,9 +31,14 @@ class LoginNotifier extends BaseNotifier {
         email: emailField.text,
         password: passwordField.text,
       ),
-      onSuccess: (data) => _tokensStorage.saveTokens(data.accessToken, data.refreshToken),
+      onSuccess: _onLoginSuccess,
       onError: RouterExtensions.showErrorFlushbar,
     );
+  }
+
+  void _onLoginSuccess(TokensResponse response) {
+    _tokensStorage.saveTokens(response.accessToken, response.refreshToken);
+    ExtendedNavigator.rootNavigator.pushNamedAndRemoveUntil(Routes.postsScreen, (route) => false);
   }
 
   void onLoginClicked() {

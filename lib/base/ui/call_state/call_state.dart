@@ -15,6 +15,8 @@ class CallState<T> {
 
   CallState.error(this.exception) : status = Status.ERROR;
 
+  bool get isSuccessful => status == Status.SUCCESS;
+
   @override
   String toString() => "Status : $status \n Message : $exception \n Data : $data";
 
