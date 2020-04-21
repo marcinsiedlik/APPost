@@ -8,7 +8,9 @@ abstract class UiPost with _$UiPost {
   const factory UiPost({
     @required int id,
     @required String userNick,
+    @required String userName,
     @required DateTime creationDate,
+    @required String title,
     @required String description,
   }) = _UiPost;
 

@@ -68,7 +68,7 @@ class PostsScreen extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) => PostItem(
-          item: notifier.posts[index],
+          post: notifier.posts[index],
           onClicked: notifier.onPostClicked,
         ),
         childCount: notifier.posts.length,

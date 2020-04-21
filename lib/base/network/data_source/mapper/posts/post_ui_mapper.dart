@@ -9,7 +9,9 @@ class PostUiMapper implements UiMapper<NetworkPost, UiPost> {
   UiPost mapToUi(NetworkPost network) => UiPost(
         id: network.id,
         userNick: network.userNick,
+        userName: network.userName,
         creationDate: DateTime.tryParse(network.creationDate),
+        title: network.title,
         description: network.description,
       );
 }
