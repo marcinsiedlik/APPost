@@ -29,6 +29,7 @@ class _PostsAppBarState extends State<PostsAppBar> {
   }
 
   void _onTextChanged() {
+    widget.onSearchChanged(controller.text);
     if (controller.text.isEmpty != isFieldEmpty) {
       setState(() {
         isFieldEmpty = controller.text.isEmpty;

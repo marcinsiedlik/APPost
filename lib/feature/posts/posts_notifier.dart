@@ -52,6 +52,7 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
   }
 
   void _fetchPosts({@required int page}) async {
+    refreshCompleter = Completer<void>();
     dispatch<UiPostResponse>(
       pagedCallState: postsCallState,
       additionalFetch: page > 0,
@@ -76,7 +77,6 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
 
   Future<void> onRefreshed() {
     _updateFilterAndCallRequest();
-    refreshCompleter = Completer<void>();
     return refreshCompleter.future;
   }
 

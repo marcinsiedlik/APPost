@@ -52,7 +52,11 @@ class PostsScreen extends StatelessWidget {
             onAvatarClicked: notifier.onAvatarClicked,
           ),
           notifier.postsCallState.whenInitialOrElse(
-            success: (_) => _buildPostsList(context, notifier),
+            success: (data) => data.posts.isNotEmpty
+                ? _buildPostsList(context, notifier)
+                : SliverFillRemaining(
+                    child: ErrorView(type: ErrorType.emptyList),
+                  ),
             error: (_) => SliverFillRemaining(
               child: ErrorView(messageKey: 'posts_fetch_error'),
             ),
