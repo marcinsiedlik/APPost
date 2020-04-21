@@ -1,6 +1,7 @@
 import 'package:appost/base/di/get_it.dart';
 import 'package:appost/base/extensions/notifier_extensions.dart';
 import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
+import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/widgets/error_view.dart';
 import 'package:appost/feature/posts/posts_notifier.dart';
 import 'package:appost/feature/posts/widget/post_item.dart';
@@ -26,6 +27,16 @@ class PostsScreen extends StatelessWidget {
           error: (_) => Container(),
         ),
       ),
+      floatingActionButton: notifier.userCallState.isSuccessful
+          ? Padding(
+              padding: MediaQuery.of(context).padding,
+              child: FloatingActionButton(
+                backgroundColor: AppColors.colorAccent,
+                onPressed: notifier.onFabPressed,
+                child: Icon(Icons.add),
+              ),
+            )
+          : null,
     );
   }
 

@@ -12,6 +12,14 @@ class PostItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Card(
+        elevation: 4,
+        child: Container(
+          height: 100,
+        ),
+      ),
+    );
   }
 }
