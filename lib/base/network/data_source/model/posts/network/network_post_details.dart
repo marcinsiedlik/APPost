@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'network_post_details.freezed.dart';
-
 part 'network_post_details.g.dart';
 
 @freezed
@@ -10,9 +9,10 @@ abstract class NetworkPostDetails with _$NetworkPostDetails {
     int id,
     int userId,
     String userNick,
+    String userName,
     String creationDate,
     String title,
-    String description,
+    String content,
   }) = _NetworkPostDetails;
 
   factory NetworkPostDetails.fromJson(Map<String, dynamic> json) => _$NetworkPostDetailsFromJson(json);

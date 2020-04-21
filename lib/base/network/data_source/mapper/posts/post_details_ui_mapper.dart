@@ -10,8 +10,9 @@ class PostDetailsUiMapper implements UiMapper<NetworkPostDetails, UiPostDetails>
         id: network.id,
         userId: network.userId,
         userNick: network.userNick,
+        userName: network.userName,
         creationDate: DateTime.tryParse(network.creationDate),
         title: network.title,
-        description: network.description,
+        content: network.content,
       );
 }
