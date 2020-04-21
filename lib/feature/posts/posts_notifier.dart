@@ -80,6 +80,8 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
 
   void onAvatarClicked() {}
 
+  void onPostClicked(UiPost post) {}
+
   void onSearchChanged(String text) {
     if (text == filterText) {
       return;

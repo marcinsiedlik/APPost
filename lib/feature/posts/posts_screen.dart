@@ -3,6 +3,7 @@ import 'package:appost/base/extensions/notifier_extensions.dart';
 import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
 import 'package:appost/base/ui/widgets/error_view.dart';
 import 'package:appost/feature/posts/posts_notifier.dart';
+import 'package:appost/feature/posts/widget/post_item.dart';
 import 'package:appost/feature/posts/widget/posts_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class PostsScreen extends StatelessWidget {
             onAvatarClicked: notifier.onAvatarClicked,
           ),
           notifier.postsCallState.whenInitialOrElse(
-            success: null,
+            success: (_) => _buildPostsList(context, notifier),
             error: (_) => SliverFillRemaining(
               child: ErrorView(messageKey: 'posts_fetch_error'),
             ),
@@ -49,6 +50,18 @@ class PostsScreen extends StatelessWidget {
         ],
       ),
       onRefresh: notifier.onRefreshed,
+    );
+  }
+
+  Widget _buildPostsList(BuildContext context, PostsNotifier notifier) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => PostItem(
+          item: notifier.posts[index],
+          onClicked: notifier.onPostClicked,
+        ),
+        childCount: notifier.posts.length,
+      ),
     );
   }
 }
