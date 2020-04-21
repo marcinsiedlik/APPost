@@ -51,7 +51,7 @@ class PostItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Marcin Siedlik',
+              post.userName,
               style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 color: AppColors.colorPrimary,
@@ -101,13 +101,13 @@ class PostItem extends StatelessWidget {
                   color: Colors.black38,
                   fontSize: 12,
                 ),
-                maxLines: 3,
               )
             ],
           ),
           const SizedBox(height: 8),
           Text(
             post.description,
+            maxLines: 3,
             style: const TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.black87,

@@ -35,5 +35,7 @@
   "search_nick": "Wyszukaj pseudonim",
   "error_occurred": "Wystąpił błąd",
   "nothing_is_here": "Nic tu nie ma",
-  "posts_fetch_error": "Podczas pobierania postów wystąpił nieoczekiwany błąd. Pociągnij palcem od góry ekranu aby spróbować ponownie."
+  "posts_fetch_error": "Podczas pobierania postów wystąpił nieoczekiwany błąd. Pociągnij palcem od góry ekranu aby spróbować ponownie.",
+  "post_details_fetch_error": "Nie udało się pobrać szczegółów tego posta",
+  "published": "Opublikowano"
 }
