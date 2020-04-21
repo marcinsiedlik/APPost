@@ -107,7 +107,8 @@ class PostItem extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             post.description,
-            maxLines: 3,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontWeight: FontWeight.w400,
               color: Colors.black87,
