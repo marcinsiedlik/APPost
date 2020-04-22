@@ -4,6 +4,7 @@ import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
 import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/localization/app_localizations.dart';
 import 'package:appost/base/ui/widgets/error_view.dart';
+import 'package:appost/feature/posts/widget/post_item.dart';
 import 'package:appost/feature/user_profile/user_profile_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,13 +38,48 @@ class UserProfileScreen extends StatelessWidget {
   }
 
   Widget _buildSuccessLayout(BuildContext context, UserProfileNotifier notifier, UiUser user) {
-    return ListView(
-      children: <Widget>[
-        const SizedBox(height: 32),
-        _buildUserHeader(context, user),
-        const SizedBox(height: 32),
-        _buildUserInfo(context, user),
+    return CustomScrollView(
+      controller: notifier.pagedScrollController,
+      slivers: <Widget>[
+        SliverList(
+          delegate: SliverChildListDelegate([
+            const SizedBox(height: 32),
+            _buildUserHeader(context, user),
+            const SizedBox(height: 32),
+            _buildUserInfo(context, user),
+          ]),
+        ),
+        _buildPostsSection(context, notifier),
       ],
+    );
+  }
+
+  Widget _buildPostsSection(BuildContext context, UserProfileNotifier notifier) {
+    return notifier.postsState.whenInitial(
+      initial: () => SliverFillRemaining(hasScrollBody: false),
+      progress: () => SliverFillRemaining(
+        hasScrollBody: false,
+        child: Center(child: CircularProgressIndicator()),
+      ),
+      success: (data) => data.posts.isNotEmpty
+          ? SliverChildBuilderDelegate(
+              (context, index) => PostItem(
+                post: notifier.posts[index],
+                onClicked: notifier.onPostClicked,
+              ),
+              childCount: notifier.posts.length,
+            )
+          : SliverFillRemaining(
+              hasScrollBody: false,
+              child: ErrorView(
+                type: ErrorType.emptyList,
+                titleKey: 'user_no_posts',
+              ),
+            ),
+      error: (_) => SliverFillRemaining(
+        hasScrollBody: false,
+        child: ErrorView(messageKey: 'user_posts_fetch_error'),
+      ),
     );
   }
 

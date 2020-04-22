@@ -13,11 +13,11 @@ mixin AppPaginationMixin {
   }
 
   void onPagedRequestSuccess({@required first, @required last}) {
-    if (first) {
-      return;
-    }
     if (last) {
       removePaginationListener();
+      return;
+    }
+    if (first) {
       return;
     }
     addPaginationListener();

@@ -38,5 +38,7 @@
   "posts_fetch_error": "Podczas pobierania postów wystąpił nieoczekiwany błąd. Pociągnij palcem od góry ekranu aby spróbować ponownie.",
   "post_details_fetch_error": "Nie udało się pobrać szczegółów tego posta",
   "published": "Opublikowano",
-  "user_fetch_error": "Podczas pobierania danych użytkownika wystąpił nieoczekiwany bład"
+  "user_fetch_error": "Podczas pobierania danych użytkownika wystąpił nieoczekiwany bład",
+  "user_posts_fetch_error": "Podczas pobierania postów użytkownika wystąpił nieoczekiwany bład",
+  "user_no_posts": "Użytkownik nie opublikował żadnego postu"
 }
