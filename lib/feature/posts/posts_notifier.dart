@@ -80,7 +80,11 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
     return refreshCompleter.future;
   }
 
-  void onAvatarClicked() {}
+  void onAvatarClicked() {
+    if (userCallState.isSuccessful) {
+      ExtendedNavigator.ofRouter<Router>().pushUserProfileScreen(userId: userCallState.data.id);
+    }
+  }
 
   void onPostClicked(UiPost post) {
     ExtendedNavigator.ofRouter<Router>().pushPostDetailsScreen(postId: post.id);
