@@ -62,12 +62,14 @@ class UserProfileScreen extends StatelessWidget {
         child: Center(child: CircularProgressIndicator()),
       ),
       success: (data) => data.posts.isNotEmpty
-          ? SliverChildBuilderDelegate(
-              (context, index) => PostItem(
-                post: notifier.posts[index],
-                onClicked: notifier.onPostClicked,
+          ? SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => PostItem(
+                  post: notifier.posts[index],
+                  onClicked: notifier.onPostClicked,
+                ),
+                childCount: notifier.posts.length,
               ),
-              childCount: notifier.posts.length,
             )
           : SliverFillRemaining(
               hasScrollBody: false,

@@ -4,6 +4,8 @@ import 'package:appost/base/network/data_source/model/posts/ui/ui_post_details.d
 import 'package:appost/base/network/data_source/repository/posts/posts_repository.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
+import 'package:appost/base/ui/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -33,5 +35,9 @@ class PostDetailsNotifier extends BaseNotifier {
     );
   }
 
-  void onVisitProfileClicked() {}
+  void onVisitProfileClicked() {
+    if (postDetailsState.isSuccessful) {
+      ExtendedNavigator.ofRouter<Router>().pushUserProfileScreen(userId: postDetailsState.data.userId);
+    }
+  }
 }

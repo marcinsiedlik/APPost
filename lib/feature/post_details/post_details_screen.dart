@@ -14,7 +14,7 @@ class PostDetailsScreen extends StatelessWidget {
 
   PostDetailsScreen(this.postId);
 
-  static const _datePattern = ['godz. ', H, ':', nn, ' | ', dd, '.', m, '.', yyyy];
+  static const _datePattern = [H, ':', nn, ' | ', dd, '.', m, '.', yyyy];
 
   @override
   Widget build(BuildContext context) {
