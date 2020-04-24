@@ -1,4 +1,5 @@
 import 'package:appost/feature/login/login_screen.dart';
+import 'package:appost/feature/new_post/new_post_screen.dart';
 import 'package:appost/feature/post_details/post_details_screen.dart';
 import 'package:appost/feature/posts/posts_screen.dart';
 import 'package:appost/feature/register/register_screen.dart';
@@ -16,4 +17,5 @@ abstract class $Router {
   PostsScreen postsScreen;
   PostDetailsScreen postDetailsScreen;
   UserProfileScreen userProfileScreen;
+  NewPostScreen newPostScreen;
 }

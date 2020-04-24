@@ -13,12 +13,16 @@ mixin AppFormsMixin {
     @required FormFieldValidator<String> validator,
     @required VoidCallback onEditingComplete,
     @required String labelText,
-    @required IconData prefixIcon,
+    IconData prefixIcon,
     bool obscureText = false,
+    int maxLines = 1,
+    int maxLength,
   }) {
     return TextFormField(
       controller: controller,
       focusNode: node,
+      maxLines: maxLines,
+      maxLength: maxLength,
       textInputAction: textInputAction,
       keyboardType: keyboardType,
       cursorColor: AppColors.colorPrimary,
@@ -26,7 +30,7 @@ mixin AppFormsMixin {
       onEditingComplete: onEditingComplete,
       obscureText: obscureText,
       decoration: InputDecoration(
-        prefixIcon: Icon(prefixIcon),
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         border: OutlineInputBorder(borderRadius: const BorderRadius.all(Radius.circular(12))),
         labelText: labelText,
       ),

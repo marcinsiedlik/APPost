@@ -40,5 +40,10 @@
   "published": "Opublikowano",
   "user_fetch_error": "Podczas pobierania danych użytkownika wystąpił nieoczekiwany bład",
   "user_posts_fetch_error": "Podczas pobierania postów użytkownika wystąpił nieoczekiwany bład",
-  "user_no_posts": "Użytkownik nie opublikował żadnego postu"
+  "user_no_posts": "Użytkownik nie opublikował żadnego postu",
+  "title": "Tytuł",
+  "content": "Treść",
+  "new_post": "Dodaj nowy post",
+  "save": "Zapisz",
+  "created_successfully": "Utworzono pomyślnie"
 }

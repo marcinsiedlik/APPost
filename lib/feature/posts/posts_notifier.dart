@@ -76,7 +76,7 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
   }
 
   Future<void> onRefreshed() {
-    _updateFilterAndCallRequest();
+    _updateFilterAndCallRequest(updatedFilterText: filterText);
     return refreshCompleter.future;
   }
 
@@ -90,7 +90,12 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
     ExtendedNavigator.ofRouter<Router>().pushPostDetailsScreen(postId: post.id);
   }
 
-  void onFabPressed() {}
+  void onFabPressed() async {
+    final added = await ExtendedNavigator.ofRouter<Router>().pushNewPostScreen();
+    if (added != null) {
+      _updateFilterAndCallRequest(updatedFilterText: filterText);
+    }
+  }
 
   void onSearchChanged(String text) {
     if (text == filterText) {
@@ -99,7 +104,7 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
     _updateFilterAndCallRequest(updatedFilterText: text);
   }
 
-  void _updateFilterAndCallRequest({String updatedFilterText = ''}) {
+  void _updateFilterAndCallRequest({@required String updatedFilterText}) {
     filterText = updatedFilterText;
     posts.clear();
     resetCurrentPage();
