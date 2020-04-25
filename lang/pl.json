@@ -48,5 +48,9 @@
   "created_successfully": "Utworzono pomyślnie",
   "user_posts": "Posty użytkownika:",
   "logout": "Wyloguj się",
-  "remove_account": "Usuń konto"
+  "remove_account": "Usuń konto",
+  "yes": "Tak",
+  "no": "Nie",
+  "attention": "Uwaga",
+  "remove_message": "Usunięcie konta spowoduje wykasowanie wszystkich opublikowanych postów, kontynuować?"
 }

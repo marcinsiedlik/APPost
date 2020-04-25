@@ -109,7 +109,7 @@ class _PostsAppBarState extends State<PostsAppBar> {
         padding: const EdgeInsets.only(right: 16, left: 8),
         child: SvgPicture.asset('assets/icons/dots_vertical.svg'),
       ),
-      onSelected: (item) => notifier.onMenuItemClicked(item.action),
+      onSelected: (item) => notifier.onMenuItemClicked(context, item.action),
       itemBuilder: (context) => AppBarMenuItem.defaultItems
           .map(
             (e) => PopupMenuItem<AppBarMenuItem>(

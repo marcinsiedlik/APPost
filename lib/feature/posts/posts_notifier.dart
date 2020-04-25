@@ -8,8 +8,10 @@ import 'package:appost/base/network/data_source/model/posts/ui/ui_post_response.
 import 'package:appost/base/network/data_source/model/user/ui/ui_user.dart';
 import 'package:appost/base/network/data_source/repository/posts/posts_repository.dart';
 import 'package:appost/base/network/data_source/repository/user/user_repository.dart';
+import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
 import 'package:appost/base/ui/call_state/call_state.dart';
 import 'package:appost/base/ui/call_state/paged_call_state.dart';
+import 'package:appost/base/ui/dialogs/app_dialogs_mixin.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
 import 'package:appost/base/ui/pagination/app_pagination_mixin.dart';
 import 'package:appost/base/ui/routes/router.gr.dart';
@@ -19,13 +21,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class PostsNotifier extends BaseNotifier with AppPaginationMixin {
+class PostsNotifier extends BaseNotifier with AppPaginationMixin, AppDialogsMixin {
   final PostsRepository _postsRepository;
   final UserRepository _userRepository;
   final PostResponseUiMapper _postUiMapper;
   final UserUiMapper _userUiMapper;
+  final OauthTokensStorage _tokensStorage;
 
-  PostsNotifier(this._postsRepository, this._userRepository, this._postUiMapper, this._userUiMapper) {
+  PostsNotifier(
+    this._postsRepository,
+    this._userRepository,
+    this._postUiMapper,
+    this._userUiMapper,
+    this._tokensStorage,
+  ) {
     _fetchUserInfo();
     initPagination((page) => _fetchPosts(page: page));
   }
@@ -98,11 +107,24 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
     }
   }
 
-  void onMenuItemClicked(AppBarMenuAction action) {
-//    action.when(
-//      logout: null,
-//      removeAccount: null,
-//    );
+  void onMenuItemClicked(BuildContext context, AppBarMenuAction action) {
+    action.when(
+      logout: () => _handleLogout(),
+      removeAccount: () => _handleRemoveUser(context),
+    );
+  }
+
+  void _handleLogout() {
+    _tokensStorage.clearTokens();
+    ExtendedNavigator.ofRouter<Router>().pushNamedAndRemoveUntil(Routes.loginScreen, (_) => false);
+  }
+
+  void _handleRemoveUser(BuildContext context) async {
+    final shouldRemove = await showYesNoDialog(
+      context: context,
+      messageKey: 'remove_message',
+    );
+    if (shouldRemove) {}
   }
 
   void onSearchChanged(String text) {
