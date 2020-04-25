@@ -30,4 +30,7 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository {
 
   @override
   Future<NetworkUser> getUserInfo({@required int userId}) => call(() => _service.getUserInfo(userId));
+
+  @override
+  Future<void> deleteAccount() => call(() => _service.deleteAccount());
 }

@@ -10,4 +10,6 @@ abstract class UserRepository {
   Future<NetworkUser> getLoggedUserInfo();
 
   Future<NetworkUser> getUserInfo({int userId});
+
+  Future<void> deleteAccount();
 }

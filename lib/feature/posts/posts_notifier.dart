@@ -43,6 +43,7 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin, AppDialogsMixi
 
   var userCallState = CallState<UiUser>();
   var postsCallState = PagedCallState<UiPostResponse>();
+  var deleteAccountCallState = CallState<void>();
   var refreshCompleter = Completer<void>();
 
   var filterText = '';
@@ -85,6 +86,18 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin, AppDialogsMixi
     );
   }
 
+  void _deleteAccount() async {
+    dispatch(
+      callState: deleteAccountCallState,
+      block: _userRepository.deleteAccount,
+      onSuccess: (_) {
+        _tokensStorage.clearTokens();
+        ExtendedNavigator.ofRouter<Router>().pushNamedAndRemoveUntil(Routes.loginScreen, (_) => false);
+      },
+      onError: RouterExtensions.showErrorFlushbar,
+    );
+  }
+
   Future<void> onRefreshed() {
     _updateFilterAndCallRequest(updatedFilterText: filterText);
     return refreshCompleter.future;
@@ -124,7 +137,9 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin, AppDialogsMixi
       context: context,
       messageKey: 'remove_message',
     );
-    if (shouldRemove) {}
+    if (shouldRemove) {
+      _deleteAccount();
+    }
   }
 
   void onSearchChanged(String text) {

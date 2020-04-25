@@ -31,6 +31,10 @@ abstract class UserService {
   @GET('/user/{id}')
   Future<NetworkUser> getUserInfo(@Path('id') int userId);
 
+  @secured
+  @DELETE('/user/remove')
+  Future<void> deleteAccount();
+
   @factoryMethod
   factory UserService(Dio dio) = _UserService;
 }

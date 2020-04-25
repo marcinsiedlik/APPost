@@ -52,5 +52,6 @@
   "yes": "Tak",
   "no": "Nie",
   "attention": "Uwaga",
-  "remove_message": "Usunięcie konta spowoduje wykasowanie wszystkich opublikowanych postów, kontynuować?"
+  "remove_message": "Usunięcie konta spowoduje wykasowanie wszystkich opublikowanych postów, kontynuować?",
+  "account_deleted": "Konto usunięte"
 }
