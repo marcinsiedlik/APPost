@@ -49,39 +49,63 @@ class UserProfileScreen extends StatelessWidget {
             _buildUserInfo(context, user),
           ]),
         ),
-        _buildPostsSection(context, notifier),
+        ..._buildPostsSection(context, notifier),
       ],
     );
   }
 
-  Widget _buildPostsSection(BuildContext context, UserProfileNotifier notifier) {
+  List<Widget> _buildPostsSection(BuildContext context, UserProfileNotifier notifier) {
     return notifier.postsState.whenInitial(
-      initial: () => SliverFillRemaining(hasScrollBody: false),
-      progress: () => SliverFillRemaining(
-        hasScrollBody: false,
-        child: Center(child: CircularProgressIndicator()),
-      ),
+      initial: () => [SliverFillRemaining(hasScrollBody: false)],
+      progress: () => [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Center(child: CircularProgressIndicator()),
+        )
+      ],
       success: (data) => data.posts.isNotEmpty
-          ? SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => PostItem(
-                  post: notifier.posts[index],
-                  onClicked: notifier.onPostClicked,
+          ? [
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      AppLocalizations.of(context).get('user_posts'),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: AppColors.colorPrimary,
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => PostItem(
+                    post: notifier.posts[index],
+                    onClicked: notifier.onPostClicked,
+                  ),
+                  childCount: notifier.posts.length,
                 ),
-                childCount: notifier.posts.length,
-              ),
-            )
-          : SliverFillRemaining(
-              hasScrollBody: false,
-              child: ErrorView(
-                type: ErrorType.emptyList,
-                titleKey: 'user_no_posts',
-              ),
-            ),
-      error: (_) => SliverFillRemaining(
-        hasScrollBody: false,
-        child: ErrorView(messageKey: 'user_posts_fetch_error'),
-      ),
+              )
+            ]
+          : [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: ErrorView(
+                  type: ErrorType.emptyList,
+                  titleKey: 'user_no_posts',
+                ),
+              )
+            ],
+      error: (_) => [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: ErrorView(messageKey: 'user_posts_fetch_error'),
+        )
+      ],
     );
   }
 
@@ -116,7 +140,7 @@ class UserProfileScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Card(
-        elevation: 4,
+        elevation: 2,
         child: Column(
           children: <Widget>[
             _buildInfoLine(

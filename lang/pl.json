@@ -45,5 +45,6 @@
   "content": "Treść",
   "new_post": "Dodaj nowy post",
   "save": "Zapisz",
-  "created_successfully": "Utworzono pomyślnie"
+  "created_successfully": "Utworzono pomyślnie",
+  "user_posts": "Posty użytkownika:"
 }
