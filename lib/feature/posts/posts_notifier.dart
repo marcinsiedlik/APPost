@@ -13,6 +13,7 @@ import 'package:appost/base/ui/call_state/paged_call_state.dart';
 import 'package:appost/base/ui/notifier/base_notifier.dart';
 import 'package:appost/base/ui/pagination/app_pagination_mixin.dart';
 import 'package:appost/base/ui/routes/router.gr.dart';
+import 'package:appost/feature/posts/model/app_bar_menu_action.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
@@ -95,6 +96,13 @@ class PostsNotifier extends BaseNotifier with AppPaginationMixin {
     if (added != null) {
       _updateFilterAndCallRequest(updatedFilterText: filterText);
     }
+  }
+
+  void onMenuItemClicked(AppBarMenuAction action) {
+//    action.when(
+//      logout: null,
+//      removeAccount: null,
+//    );
   }
 
   void onSearchChanged(String text) {

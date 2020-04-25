@@ -46,5 +46,7 @@
   "new_post": "Dodaj nowy post",
   "save": "Zapisz",
   "created_successfully": "Utworzono pomyślnie",
-  "user_posts": "Posty użytkownika:"
+  "user_posts": "Posty użytkownika:",
+  "logout": "Wyloguj się",
+  "remove_account": "Usuń konto"
 }
