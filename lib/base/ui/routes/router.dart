@@ -11,9 +11,10 @@ import 'package:auto_route/auto_route_annotations.dart';
   generateArgsHolderForSingleParameterRoutes: false,
 )
 abstract class $Router {
+  @initial
+  PostsScreen postsScreen;
   LoginScreen loginScreen;
   RegisterScreen registerScreen;
-  PostsScreen postsScreen;
   PostDetailsScreen postDetailsScreen;
   UserProfileScreen userProfileScreen;
   NewPostScreen newPostScreen;

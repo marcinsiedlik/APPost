@@ -1,5 +1,3 @@
-import 'package:appost/base/di/get_it.dart';
-import 'package:appost/base/network/tokens/storage/oauth_tokens_storage.dart';
 import 'package:appost/base/ui/app_ui_properties.dart';
 import 'package:appost/base/ui/localization/app_localizations.dart';
 import 'package:appost/base/ui/localization/resolution_callbacks.dart' as resolutionCallbacks;
@@ -23,17 +21,7 @@ class App extends StatelessWidget {
       ],
       localeListResolutionCallback: resolutionCallbacks.getSupportedListLocale,
       localeResolutionCallback: resolutionCallbacks.getSupportedLocale,
-      builder: ExtendedNavigator<Router>(
-        router: Router(),
-        initialRoute: _getInitialRoute(),
-      ),
+      builder: ExtendedNavigator<Router>(router: Router()),
     );
-  }
-
-  String _getInitialRoute() {
-    if (getIt<OauthTokensStorage>().areTokensPresent) {
-      return Routes.postsScreen;
-    }
-    return Routes.loginScreen;
   }
 }
