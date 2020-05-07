@@ -19,6 +19,7 @@ class App extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      debugShowCheckedModeBanner: false,
       localeListResolutionCallback: resolutionCallbacks.getSupportedListLocale,
       localeResolutionCallback: resolutionCallbacks.getSupportedLocale,
       builder: ExtendedNavigator<Router>(router: Router()),
